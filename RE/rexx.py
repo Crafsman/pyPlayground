@@ -22,8 +22,12 @@ import urllib.request
 # sys.exit('finish')
 
 #Read source.txt file
-f = open('source.txt', 'r')
-html = f.read()
-f.close()
+# f = open('source.txt', 'r')
+# html = f.read()
+# f.close()
 
+print(re.search(r'\d', 'I love 124 FishC.com'))
 
+#匹配IP地址的
+#re.search(r'[01]\d\d|2[0-4]|25[0-5]','188')
+#re.search(r'(([01]{0,1}\d{0,1}\d|2[0-4]|25[0-5])\.){3}([01]{0,1}\d\{0,1}d|2[0-4]|25[0-5])','192.168.1.1')

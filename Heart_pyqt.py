@@ -9,7 +9,7 @@ from math import pi, cos, sin
 class Ui_heartWidget(object):
     def setupUi(self, heartWidget):
         heartWidget.setObjectName("heartWidget")
-        heartWidget.resize(600, 400)
+        heartWidget.resize(700, 700)
         heartWidget.setStyleSheet("border-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 0), stop:0.52 rgba(0, 0, 0, 0), stop:0.565 rgba(82, 121, 76, 33), stop:0.65 rgba(159, 235, 148, 64), stop:0.721925 rgba(255, 238, 150, 129), stop:0.77 rgba(255, 128, 128, 204), stop:0.89 rgba(191, 128, 255, 64), stop:1 rgba(0, 0, 0, 0));")
         self.startButton = QPushButton(heartWidget)
         self.startButton.setGeometry(QRect(10, 10, 75, 23))
@@ -44,7 +44,7 @@ class HeartPicture(QWidget):
 
         for i in range(0, 90):
             for j in range(0, 90):
-                r = pi / 45 * i * (1 - sin(pi / 45 * j)) * 18
+                r = pi / 45 * i * (1 - sin(pi / 45 * j)) * 40
                 x = r * cos(pi / 45.0 * j) * sin(pi / 45.0 * i) + self.width() / 2
                 y = -r * sin(pi / 45 * j) + self.height() / 4
                 HeartPicture.points.append((x,y))
@@ -78,7 +78,7 @@ class HeartPicture(QWidget):
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     w = HeartPicture()
-    w.resize(500, 500)
+    
    
     w.setWindowTitle('Simple')
     w.show()
