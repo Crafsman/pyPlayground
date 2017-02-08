@@ -8,6 +8,9 @@ from .models import Question, Choice
 
 from django.template import loader
 
+def index(request):
+    return HttpResponse("Hello, world. I'm coming back")
+
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
