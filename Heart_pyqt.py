@@ -69,7 +69,6 @@ class HeartPicture(QWidget):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
         painter.setPen(QPen(Qt.red, 1, Qt.DotLine, Qt.RoundCap, Qt.RoundJoin))
-        painter.translate(0,0)
         painter.drawPath(HeartPicture.mPath)
 
     

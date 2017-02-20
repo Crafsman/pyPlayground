@@ -1,36 +1,51 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-#http://www.runoob.com/python/python-email.html
-#http://www.cnblogs.com/lonelycatcher/archive/2012/02/09/2343463.html
+#https://segmentfault.com/q/1010000007162074/a-1020000007602959
+#136授权码y1990724
+#1.163的SMTP必须打开，记住授权密码
+#2. 不能给ＱＱ邮箱发送
 import smtplib
 from email.mime.text import MIMEText
 from email.header import Header
 
 def sendEmail():
-    # 第三方 SMTP 服务
-    mail_host = "smtp.163.com"  # 设置服务器
-    mail_user = "ymq655"  # 用户名
-    mail_pass = "1990724"  # 口令
-
+    # 设置服务器所需信息
+    # 163邮箱服务器地址
+    mail_host = 'smtp.163.com'
+    # 163用户名
+    mail_user = 'ymq655'
+    # 密码
+    mail_pass = 'y1990724' ##'你的客户端授权密码' NOT 邮箱密码
+    # 邮件发送方邮箱地址
     sender = 'ymq655@163.com'
-    receivers = ['664811483@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+    # 邮件接受方邮箱地址，注意需要[]包裹，这意味着你可以写多个邮件地址群发
+    receivers = ['ymq655@126.com']
 
-    message = MIMEText('Python 邮件发送测试...', 'plain', 'utf-8')
-    message['From'] = Header("菜鸟教程", 'utf-8')
-    message['To'] = Header("测试", 'utf-8')
+    # 设置email信息
+    # 邮件内容设置
+    message = MIMEText('content', 'plain', 'utf-8')
+    # 邮件主题
+    message['Subject'] = 'title'
+    # 发送方信息
+    message['From'] = sender
+    # 接受方信息
+    message['To'] = receivers[0]
 
-    subject = 'Python SMTP 邮件测试'
-    message['Subject'] = Header(subject, 'utf-8')
-
+    # 登录并发送邮件
     try:
         smtpObj = smtplib.SMTP()
-        smtpObj.connect(mail_host, 25)  # 25 为 SMTP 端口号
+        # 连接到服务器
+        smtpObj.connect(mail_host, 25)
+        # 登录到服务器
         smtpObj.login(mail_user, mail_pass)
-        smtpObj.sendmail(sender, receivers, message.as_string())
-        print("邮件发送成功")
-
-    except smtplib.SMTPException:
-        print( "Error: 无法发送邮件")
+        # 发送
+        smtpObj.sendmail(
+            sender, receivers, message.as_string())
+        # 退出
+        smtpObj.quit()
+        print('success')
+    except smtplib.SMTPException as e:
+        print('error', e)  # 打印错误
 
 
 
